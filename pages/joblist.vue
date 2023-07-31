@@ -1,7 +1,7 @@
 <template>
   <div>
     <Search @filter="applyFilter" class="mx-5" />
-    <div v-if="filteredJobList && filteredJobList.length > 0">
+    <div v-if="hasFilteredJobs">
       <div v-for="job in filteredJobList" :key="job.id">
         <div class="grid grid-cols-1 gap-4 mt-8 mx-5">
           <JobCart :job="job" />
@@ -19,8 +19,8 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
 import { useJobStore } from "@/stores/jobStore";
-import { onMounted } from "vue";
 
 const store = useJobStore();
 const filteredJobList = ref([]);
@@ -44,4 +44,6 @@ const applyFilter = async ({ location, keyword }) => {
     console.error("Error filtering job listings:", error);
   }
 };
+
+const hasFilteredJobs = computed(() => filteredJobList.value.length > 0);
 </script>

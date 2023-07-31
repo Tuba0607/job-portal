@@ -18,7 +18,7 @@ import { ref, computed, onMounted } from "vue";
 const store = useJobStore();
 const router = useRoute();
 
-const jobDetail = ref([]);
+const jobDetail = ref({});
 
 const jobId = computed(() => router.params);
 
