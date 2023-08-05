@@ -18,13 +18,11 @@ import { ref, computed, onMounted } from "vue";
 const store = useJobStore();
 const router = useRoute();
 
-const jobDetail = ref({});
-
 const jobId = computed(() => router.params);
 
 onMounted(async () => {
   try {
-    jobDetail.value = await store.getJobDetail(jobId.value.id);
+    await store.getJobDetail(jobId.value.id);
   } catch (error) {
     console.error("Error fetching job detail:", error);
   }

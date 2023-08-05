@@ -1,7 +1,7 @@
 <template>
   <div
     class="p-4 border rounded-lg shadow-md cursor-pointer hover:bg-slate-100"
-    @click="$router.push(`/jobdetail/${job.id}`)"
+    @click="$router.push(`/jobdetail/${job?.id}`)"
   >
     <div class="flex">
       <img
